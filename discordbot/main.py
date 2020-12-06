@@ -1,11 +1,10 @@
 import discord
-# import config
-import os
+import config
+# import os
 from datetime import timedelta, datetime
-import subprocess
 
-token = os.environ['discordToken']
-# token = config.TOKEN
+# token = os.environ['discordToken']
+token = config.TOKEN
 client = discord.Client()
 
 
@@ -56,13 +55,6 @@ async def on_voice_state_update(member, before, after):
             msg = f'{now:%m/%d-%H:%M} に {member.name} が {before.channel.name} から退出しました。'
             await alert_channel.send(msg)
 
-
-async def on_message(message):
-    if message.guild.id == 785185113977126962:
-        cmd = message.content
-        process = (subprocess.Popen(cmd, stdout=subprocess.PIPE,
-                                    shell=True).communicate()[0]).decode('utf-8')
-        await message.channel.send(process)
 
 if __name__ == "__main__":
     client.run(token)
