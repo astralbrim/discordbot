@@ -41,5 +41,10 @@ async def on_message(message):
 
     await message.channel.send(send_message)
 
+
+@client.event
+async def on_voice_state_update(member, before, after):
+    await client.channnel.send("誰かがボイスチャンネルに入ったわよ?")
+
 if __name__ == "__main__":
     client.run(token)
