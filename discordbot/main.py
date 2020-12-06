@@ -1,7 +1,9 @@
 import discord
-import config
+# import config
+import os
 
-token = config.TOKEN
+token = os.environ['discordToken']
+# token = config.TOKEN
 client = discord.Client()
 
 
