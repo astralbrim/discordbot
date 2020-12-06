@@ -1,6 +1,7 @@
 import discord
 # import config
 import os
+from datetime import timedelta, datetime
 
 token = os.environ['discordToken']
 # token = config.TOKEN
@@ -44,7 +45,15 @@ async def on_message(message):
 
 @client.event
 async def on_voice_state_update(member, before, after):
-    await client.channnel.send("誰かがボイスチャンネルに入ったわよ?")
+    if member.guild.id == 778628083732316160 and (before.channel != after.channel):
+        now = datetime.utcnow() + timedelta(hours=9)
+        alert_channel = client.get_channel(778628083732316165)
+        if before.channel is None:
+            msg = f'{now:%m/%d-%H:%M} に {member.name} が {after.channel.name} に参加しました。'
+            await alert_channel.send(msg)
+        elif after.channel is None:
+            msg = f'{now:%m/%d-%H:%M} に {member.name} が {before.channel.name} から退出しました。'
+            await alert_channel.send(msg)
 
 if __name__ == "__main__":
     client.run(token)
