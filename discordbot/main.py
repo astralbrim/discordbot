@@ -1,5 +1,5 @@
 import discord
-import config
+# import config
 import os
 from datetime import timedelta, datetime
 
