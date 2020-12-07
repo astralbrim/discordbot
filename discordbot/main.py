@@ -1,10 +1,10 @@
 import discord
 import config
-# import os
+import os
 from datetime import timedelta, datetime
 
-# token = os.environ['discordToken']
-token = config.TOKEN
+token = os.environ['discordToken']
+# token = config.TOKEN
 client = discord.Client()
 
 
