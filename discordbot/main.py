@@ -56,6 +56,6 @@ async def on_voice_state_update(member, before, after):
             await alert_channel.send(msg)
 
 
-
+print("branch") #branch テスト用
 if __name__ == "__main__":
     client.run(token)
