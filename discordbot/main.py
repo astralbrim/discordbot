@@ -1,10 +1,11 @@
 import discord
-# import config
-import os
+import config
+# import os
 from datetime import timedelta, datetime
+import omikuzi
 
-token = os.environ['discordToken']
-# token = config.TOKEN
+# token = os.environ['discordToken']
+token = config.TOKEN
 client = discord.Client()
 
 
@@ -30,6 +31,8 @@ async def on_message(message):
                         "option: `--omanko`\n" \
                         "`/source` : ソースを出します.\n" \
                         ""
+        send_message += "`/saying`: 名言を言ってくれます.\n"
+        send_message += "`/omikuzi`: NarurungoBotがおみくじを引いてくれます.\n"
 
     if message.content == '/youtube':
         send_message: str = "https://youtube.com"
@@ -39,6 +42,13 @@ async def on_message(message):
 
     if message.content == '/source':
         send_message = "https://github.com/butsuli-shine/discordbot"
+    
+    if message.content == '/saying':
+        send_message = "なるルンゴbotは常に稼働してるのに\n"\
+                       "どうしてお前らは開発しないんだ!"
+    
+    if message.content == '/omikuzi':
+        send_message = omikuzi.get_omikuzi()
 
     await message.channel.send(send_message)
 
