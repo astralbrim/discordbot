@@ -57,10 +57,9 @@ async def on_message(message):
 	    receive = f'{message.author.mention} NarurungoBotです。お呼びでしょうか。'
 	    await message.channel.send(receive)
 
-    if message_body == 'google検索'
-        search = f'{message.author.mention}  どうぞ。'
-        send_message = "https://www.google.com"
-        await message.channel.send(search)
+    if message_body == 'google検索':
+        send_message = f"{message.author.mention} どうぞ。\n"
+        send_message += "https://www.google.com"
 
     await message.channel.send(send_message)
 
