@@ -16,38 +16,41 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    begin = message.content.split()[0]
+    if begin != "/naruru":
+        return
     send_message: str = ""
     if message.author.bot:
         return
-
-    if message.content == '/nipple':
+    message_body = message.content[8:]
+    if message_body == 'nipple':
         send_message: str = "nipple"
 
-    if message.content == '/help':
+    if message_body == 'help':
         send_message += "NarurungoBotです.あなたの願いをかなえます.\n"
-        send_message += "`/nipple`: nippleコマンドです.\n"
+        send_message += "`nipple`: nippleコマンドです.\n"
         send_message += "" \
-                        "`/youtube`: youtubeのURLを出します.\n" \
+                        "`youtube`: youtubeのURLを出します.\n" \
                         "option: `--omanko`\n" \
-                        "`/source` : ソースを出します.\n" \
+                        "`source` : ソースを出します.\n" \
                         ""
-        send_message += "`/saying`: 名言を言ってくれます.\n"
-        send_message += "`/omikuzi`: NarurungoBotがおみくじを引いてくれます.\n"
+        send_message += "`saying`: 名言を言ってくれます.\n"
+        send_message += "`omikuzi`: NarurungoBotがおみくじを引いてくれます.\n"
 
-    if message.content == '/youtube':
+    if message_body == 'youtube':
         send_message: str = "https://youtube.com"
 
-    if message.content == '/youtube --omanko':
+    if message_body == 'youtube --omanko':
         send_message = "http://pornhub.com"
 
-    if message.content == '/source':
+    if message_body == 'source':
         send_message = "https://github.com/butsuli-shine/discordbot"
-    
-    if message.content == '/saying':
-        send_message = "なるルンゴbotは常に稼働してるのに\n"\
+
+    if message_body == 'saying':
+        send_message = "なるルンゴbotは常に稼働してるのに\n" \
                        "どうしてお前らは開発しないんだ!"
-    
-    if message.content == '/omikuzi':
+
+    if message_body == 'omikuzi':
         send_message = omikuzi.get_omikuzi()
 
     await message.channel.send(send_message)
