@@ -53,6 +53,14 @@ async def on_message(message):
     if message_body == 'omikuzi':
         send_message = omikuzi.get_omikuzi()
 
+    if message_body == 'おい':
+	    receive = f'{message.author.mention} NarurungoBotです。お呼びでしょうか。'
+	    await message.channel.send(receive)
+
+    if message_body == 'google検索':
+        send_message = f"{message.author.mention} どうぞ。\n"
+        send_message += "https://www.google.com"
+
     await message.channel.send(send_message)
 
 
