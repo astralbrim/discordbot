@@ -1,11 +1,11 @@
 import discord
-import config
-# import os
+# import config
+import os
 from datetime import timedelta, datetime
 import omikuzi
 
-# token = os.environ['discordToken']
-token = config.TOKEN
+token = os.environ['discordToken']
+# token = config.TOKEN
 client = discord.Client()
 
 
